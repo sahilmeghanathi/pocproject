@@ -11,7 +11,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center max-h-screen">
-      <div className="items-center min-w-25! sm:min-w-md max-w-md justify-center  flex-col ">
+      <div className="items-center min-w-25! sm:min-w-md! max-w-md! justify-center  flex-col ">
         <div className="w-full bg-white p-6 rounded-xl text-center">
           <ImageAtom className="h-12!" src={logo} alt="Logo" preview={false} />
           <h2 className="text-xl font-semibold text-red-400">Admin Portal</h2>
