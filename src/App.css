@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+
+#root {
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  height: 100vh;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.dark-theme {
+  background-color: #333333; 
+  color: #ffffff; 
+}
+
+th {
+  background-color:var(--color-red-400) !important;
+  color: white !important;
+}
+
+table {
+  border-radius: 0.5rem !important;
+}
+
+thead {
+  border-radius: 0.5rem !important;
+}
+
+
