@@ -4,39 +4,34 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { initialValues, menuValidationSchema } from "./validation";
-import { STORAGE_KEY } from "../../utils/constant";
 import { MenuItem } from "../../interface/Menu.Interface";
+
+import { addMenuItem, updateMenuItem } from "../../store/features/menuSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 export const useAddEditMenu = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const getStoredMenu = (): MenuItem[] => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
-  };
+  const dispatch = useAppDispatch();
+  const { menuItems } = useAppSelector((state) => state.menu);
 
   const handleSubmit = (values: MenuItem) => {
-    const menuItems = getStoredMenu();
-
     if (id) {
-      // EDIT
-      const updated = menuItems.map((item) =>
-        item.id === id ? { ...values, id } : item,
+      dispatch(
+        updateMenuItem({
+          ...values,
+          id,
+        }),
       );
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
       toast.success("Menu item updated!");
     } else {
-      // ADD
-      const newItem = {
-        ...values,
-        id: Date.now().toString(),
-      };
-
-      localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify([...menuItems, newItem]),
+      dispatch(
+        addMenuItem({
+          ...values,
+          id: Date.now().toString(),
+        }),
       );
 
       toast.success("Menu item added!");
@@ -54,17 +49,20 @@ export const useAddEditMenu = () => {
   useEffect(() => {
     if (!id) return;
 
-    const items = getStoredMenu();
-    const item = items.find((i) => i.id === id);
+    const item = menuItems.find((i) => i.id === id);
 
     if (item) {
       formik.setValues(item);
     }
-  }, [id]);
+  }, [id, menuItems]);
 
   const handleBackToListing = () => {
     navigate("/menu");
   };
 
-  return { formik, isEdit: Boolean(id), handleBackToListing };
+  return {
+    formik,
+    isEdit: Boolean(id),
+    handleBackToListing,
+  };
 };

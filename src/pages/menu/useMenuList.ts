@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { STORAGE_KEY } from "../../utils/constant";
 import { defaultMenuItems } from "../../utils/data";
 import { MenuItem } from "../../interface/Menu.Interface";
+import { useAppDispatch } from "../../store/hooks";
+import { setMenu } from "../../store/features/menuSlice";
 
 export const useMenuManage = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,6 +27,7 @@ export const useMenuManage = () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultMenuItems));
       setMenuItems(defaultMenuItems);
       setAllMenuItems(defaultMenuItems);
+      dispatch(setMenu(defaultMenuItems));
     } else {
       const data: MenuItem[] = JSON.parse(stored);
       setMenuItems(data);
