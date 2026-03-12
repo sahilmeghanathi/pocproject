@@ -14,7 +14,6 @@ const App: React.FC = () => {
     const {isAuthenticated} = useAppSelector((state) => state.auth);
   
   return (
-    
       <Router>
         {isAuthenticated && <Navbar />}
         <Toaster position="top-right" reverseOrder={false} />

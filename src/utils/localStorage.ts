@@ -1,6 +1,5 @@
-import { MenuItem } from "../interface/types";
-
-const STORAGE_KEY = "menu_items";
+import { MenuItem } from "../interface/Menu.Interface";
+import { STORAGE_KEY } from "./constant";
 
 export const loadMenuFromStorage = (): MenuItem[] => {
   try {

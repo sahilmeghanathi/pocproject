@@ -3,7 +3,7 @@ import {
   loadMenuFromStorage,
   saveMenuToStorage,
 } from "../../utils/localStorage";
-import { MenuItem, MenuState } from "../../interface/types";
+import { MenuItem, MenuState } from "../../interface/Menu.Interface";
 
 const initialState: MenuState = {
   menuItems: loadMenuFromStorage(),

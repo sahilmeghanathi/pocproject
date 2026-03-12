@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { initialValues, menuValidationSchema } from "./validation";
-import { MenuItem } from "../../interface/types";
 import { STORAGE_KEY } from "../../utils/constant";
+import { MenuItem } from "../../interface/Menu.Interface";
 
 export const useAddEditMenu = () => {
   const navigate = useNavigate();

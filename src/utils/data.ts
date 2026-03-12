@@ -1,4 +1,5 @@
-import { MenuItem } from "../interface/types";
+import { MenuItem } from "../interface/Menu.Interface";
+
 
 export const defaultMenuItems: MenuItem[] = [
   {

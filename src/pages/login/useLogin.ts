@@ -9,8 +9,8 @@ import {
 } from "./validation";
 import { login } from "../../store/features/authSlice";
 import { useAppDispatch } from "../../store/hooks";
-import { LoginPayload } from "../../interface/types";
 import { DUMMY_CREDENTIALS } from "../../utils/constant";
+import { LoginPayload } from "../../interface/User.Interface";
 
 export const useLogin = () => {
   const dispatch = useAppDispatch();

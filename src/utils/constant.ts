@@ -3,4 +3,6 @@ export const DUMMY_CREDENTIALS = {
     password: "Admin@123",
   };
 
-  export const STORAGE_KEY = "menu_items";
+export const STORAGE_KEY = "menu_items";
+
+export const AUTH_KEY = "auth_user";

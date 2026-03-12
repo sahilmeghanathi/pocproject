@@ -3,8 +3,8 @@ import { Tag } from "antd";
 import { MdDeleteOutline } from "react-icons/md";
 import { FiEdit2 } from "react-icons/fi";
 import { LuEye } from "react-icons/lu";
-import { MenuItem } from "../../interface/types";
 import ConfirmAction from "../../components/custom/CustomConfirmPopup";
+import { MenuItem } from "../../interface/Menu.Interface";
 
 interface ColumnProps {
   onDelete: (id: string) => void;

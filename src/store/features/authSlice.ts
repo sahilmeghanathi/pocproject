@@ -1,11 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-import { AuthState, LoginPayload, User } from "../../interface/types";
 import {
   getUserFromStorage,
   removeUserFromStorage,
   saveUserToStorage,
 } from "../../utils/authStorage";
+import { AuthState, LoginPayload, User } from "../../interface/User.Interface";
 
 const storedUser = getUserFromStorage();
 

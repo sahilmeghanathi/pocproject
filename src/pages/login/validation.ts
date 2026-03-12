@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { LoginPayload } from "../../interface/types";
+import { LoginPayload } from "../../interface/User.Interface";
 
 export const initialValues: LoginPayload = {
   email: "",

@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { MenuItem } from "../../interface/types";
+import { MenuItem } from "../../interface/Menu.Interface";
 
 export const initialValues: MenuItem = {
   id: "",

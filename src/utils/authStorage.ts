@@ -1,7 +1,5 @@
-import { User } from "../interface/types";
-
-
-const AUTH_KEY = "auth_user";
+import { User } from "../interface/User.Interface";
+import { AUTH_KEY } from "./constant";
 
 export const getUserFromStorage = (): User | null => {
   try {
