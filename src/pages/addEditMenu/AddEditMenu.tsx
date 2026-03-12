@@ -6,13 +6,11 @@ import CustomInputField from "../../components/custom/CustomInput";
 import CustomButton from "../../components/custom/CustomButton";
 import CustomSwitchField from "../../components/custom/CustomSwitchField";
 
-
 const AddEditMenuPage = () => {
   const { formik, isEdit, handleBackToListing } = useAddEditMenu();
 
   return (
     <div className="flex justify-center items-center w-full ">
-      
       <div className="bg-white rounded-xl shadow-md w-full max-w-md p-6!">
         <h2
           onClick={handleBackToListing}

@@ -2,8 +2,13 @@ import CustomButton from "../../components/custom/CustomButton";
 import { useDashboard } from "./useDashboard";
 
 const DashboardComponent = () => {
-  const { totalItems, totalCategories, availableItems, unavailableItems, handleGoToMenu } =
-    useDashboard();
+  const {
+    totalItems,
+    totalCategories,
+    availableItems,
+    unavailableItems,
+    handleGoToMenu,
+  } = useDashboard();
 
   const Card = ({ title, value }: { title: string; value: number }) => (
     <div className="bg-white p-6 rounded-lg shadow flex flex-col border border-red-400 items-center">
@@ -25,7 +30,6 @@ const DashboardComponent = () => {
         <Card title="Available Items" value={availableItems} />
         <Card title="Unavailable Items" value={unavailableItems} />
       </div>
-
 
       <CustomButton
         type="button"

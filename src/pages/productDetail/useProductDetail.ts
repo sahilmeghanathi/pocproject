@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MenuItem } from "../../interface/Menu.Interface";
+import { getStorageItem } from "../../utils/useLocalStorage";
 
 const STORAGE_KEY = "menu_items";
 
@@ -12,8 +13,7 @@ export const useProductDetail = () => {
   const [loading, setLoading] = useState(true);
 
   const getStoredMenu = (): MenuItem[] => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
+    return getStorageItem<MenuItem[]>(STORAGE_KEY) || [];
   };
 
   useEffect(() => {
@@ -27,5 +27,5 @@ export const useProductDetail = () => {
 
   const handleBackToListing = () => navigate("/menu");
 
-  return { item, loading ,handleBackToListing};
+  return { item, loading, handleBackToListing };
 };

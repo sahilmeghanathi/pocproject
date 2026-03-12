@@ -1,12 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  loadMenuFromStorage,
-  saveMenuToStorage,
-} from "../../utils/localStorage";
 import { MenuItem, MenuState } from "../../interface/Menu.Interface";
+import { STORAGE_KEY } from "../../utils/constant";
+import { getStorageItem, setStorageItem } from "../../utils/useLocalStorage";
 
 const initialState: MenuState = {
-  menuItems: loadMenuFromStorage(),
+  menuItems: getStorageItem<MenuItem[]>(STORAGE_KEY) || [],
 };
 
 const menuSlice = createSlice({
@@ -15,19 +13,19 @@ const menuSlice = createSlice({
   reducers: {
     setMenu(state, action: PayloadAction<MenuItem[]>) {
       state.menuItems = action.payload;
-      saveMenuToStorage(state.menuItems);
+      setStorageItem(STORAGE_KEY, state.menuItems);
     },
 
     addMenuItem(state, action: PayloadAction<MenuItem>) {
       state.menuItems.push(action.payload);
-      saveMenuToStorage(state.menuItems);
+      setStorageItem(STORAGE_KEY, state.menuItems);
     },
 
     deleteMenuItem(state, action: PayloadAction<string>) {
       state.menuItems = state.menuItems.filter(
         (item) => item.id !== action.payload,
       );
-      saveMenuToStorage(state.menuItems);
+      setStorageItem(STORAGE_KEY, state.menuItems);
     },
 
     updateMenuItem(state, action: PayloadAction<MenuItem>) {
@@ -37,7 +35,7 @@ const menuSlice = createSlice({
 
       if (index !== -1) {
         state.menuItems[index] = action.payload;
-        saveMenuToStorage(state.menuItems);
+        setStorageItem(STORAGE_KEY, state.menuItems);
       }
     },
   },

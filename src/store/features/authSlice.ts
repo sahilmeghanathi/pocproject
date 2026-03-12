@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  getUserFromStorage,
-  removeUserFromStorage,
-  saveUserToStorage,
-} from "../../utils/authStorage";
 import { AuthState, LoginPayload, User } from "../../interface/User.Interface";
+import {
+  getStorageItem,
+  removeStorageItem,
+  setStorageItem,
+} from "../../utils/useLocalStorage";
+import { AUTH_KEY } from "../../utils/constant";
 
-const storedUser = getUserFromStorage();
+const storedUser = getStorageItem<User>(AUTH_KEY);
 
 const initialState: AuthState = {
   user: storedUser,
@@ -25,16 +26,14 @@ const authSlice = createSlice({
       state.user = user;
       state.isAuthenticated = true;
       state.error = null;
-
-      saveUserToStorage(user);
+      setStorageItem(AUTH_KEY, user);
     },
 
     logout(state) {
       state.user = null;
       state.isAuthenticated = false;
       state.error = null;
-
-      removeUserFromStorage();
+      removeStorageItem(AUTH_KEY);
     },
   },
 });

@@ -5,6 +5,7 @@ import { defaultMenuItems } from "../../utils/data";
 import { MenuItem } from "../../interface/Menu.Interface";
 import { useAppDispatch } from "../../store/hooks";
 import { setMenu } from "../../store/features/menuSlice";
+import { getStorageItem, setStorageItem } from "../../utils/useLocalStorage";
 
 export const useMenuManage = () => {
   const navigate = useNavigate();
@@ -21,17 +22,16 @@ export const useMenuManage = () => {
   const loadMenu = () => {
     setLoading(true);
 
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const storedMenu = getStorageItem<MenuItem[]>(STORAGE_KEY);
 
-    if (!stored) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultMenuItems));
+    if (!storedMenu) {
+      setStorageItem(STORAGE_KEY, defaultMenuItems);
       setMenuItems(defaultMenuItems);
       setAllMenuItems(defaultMenuItems);
       dispatch(setMenu(defaultMenuItems));
     } else {
-      const data: MenuItem[] = JSON.parse(stored);
-      setMenuItems(data);
-      setAllMenuItems(data);
+      setMenuItems(storedMenu);
+      setAllMenuItems(storedMenu);
     }
 
     setLoading(false);
@@ -46,7 +46,7 @@ export const useMenuManage = () => {
 
     setMenuItems(updated);
     setAllMenuItems(updated);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    setStorageItem(STORAGE_KEY, updated);
   };
 
   const handleSearch = (query: string) => setSearchQuery(query);

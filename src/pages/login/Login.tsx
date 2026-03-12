@@ -18,9 +18,7 @@ const LoginPage: React.FC = () => {
         </div>
 
         <FormikProvider value={formik}>
-
           <Form className="flex flex-col gap-4">
-
             <CustomInputField
               name="email"
               label="Email"
@@ -40,12 +38,10 @@ const LoginPage: React.FC = () => {
             <CustomButton
               type="submit"
               label="Login"
-              disabled={formik.touched && !formik.isValid }
+              disabled={formik.touched && !formik.isValid}
               className="h-12! rounded-md! font-medium! disabled:bg-blue-400! bg-blue-600! text-white! text-lg!"
             />
-
           </Form>
-          
         </FormikProvider>
       </div>
     </div>

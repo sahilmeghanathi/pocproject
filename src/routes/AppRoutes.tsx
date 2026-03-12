@@ -9,7 +9,7 @@ import DashboardComponent from "../pages/dashboard/DashboardComponent";
 import { useAppSelector } from "../store/hooks";
 
 const AppRoutes: React.FC = () => {
-  const {isAuthenticated} = useAppSelector((state) => state.auth);
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
 
   // Layout that protects all child routes
   const ProtectedLayout = () => {
