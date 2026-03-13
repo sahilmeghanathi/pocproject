@@ -12,6 +12,8 @@
     "lint:fix": "eslint . --ext ts,tsx --fix"
   },
   "dependencies": {
+    "@sentry/react": "^10.43.0",
+    "@sentry/tracing": "^7.120.4",
     "formik": "^2.4.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
